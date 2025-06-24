@@ -18,5 +18,7 @@ def login_view(request):
                 return JsonResponse({'status': 'fail'}, status=401)
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
+    elif request.method == 'GET':
+        return JsonResponse({'message': 'Por favor, usa POST para enviar datos de login'})
     else:
         return JsonResponse({'status': 'error', 'message': 'Only POST method allowed'}, status=405)
